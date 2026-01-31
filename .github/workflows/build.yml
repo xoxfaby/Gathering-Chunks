@@ -21,12 +21,12 @@ jobs:
       - name: Build with Gradle
         run: ./gradlew build
       - name: Upload artifact
-        uses: actions/upload-artifacts@v6
+        uses: actions/upload-artifact@v6
         with:
          name: ${{ github.event.repository.name }}-NeoForge
          path: ./NeoForge/build/libs/GatheringChunks-*.jar
       - name: Upload artifact
-        uses: actions/upload-artifacts@v6
+        uses: actions/upload-artifact@v6
         with:
          name: ${{ github.event.repository.name }}-Fabric
          path: ./Fabric/build/libs/GatheringChunks-*.jar

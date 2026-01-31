@@ -62,5 +62,5 @@ task copyToReleases(type: Copy) {
     }
 }
 task printVersion(){
-    println version+"-"+minecraft_version
+    println minecraft_version+"-"+version
 }

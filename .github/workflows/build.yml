@@ -16,5 +16,19 @@ jobs:
           java-version: 21
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v5
+        with:
+          cache-read-only: false
       - name: Build with Gradle
         run: ./gradlew build
+  upload:
+    runs-on: ubuntu-latest
+    name: Generate Build Artifacts
+    strategy:
+      matrix:
+        loader: [ Fabric, NeoForge ]
+    steps:
+      - name: Upload artifact
+        uses: actions/upload-artifacts@v6
+        with:
+         name: ${{ github.event.repository.name }}-{{ matrix.loader }}
+         path: ./{{ matrix.loader }}/build/libs/GatheringChunks-*.jar

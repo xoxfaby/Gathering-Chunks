@@ -20,15 +20,13 @@ jobs:
           cache-read-only: false
       - name: Build with Gradle
         run: ./gradlew build
-  upload:
-    runs-on: ubuntu-latest
-    name: Generate Build Artifacts
-    strategy:
-      matrix:
-        loader: [ Fabric, NeoForge ]
-    steps:
       - name: Upload artifact
         uses: actions/upload-artifacts@v6
         with:
-         name: ${{ github.event.repository.name }}-{{ matrix.loader }}
-         path: ./{{ matrix.loader }}/build/libs/GatheringChunks-*.jar
+         name: ${{ github.event.repository.name }}-NeoForge
+         path: ./NeoForge/build/libs/GatheringChunks-*.jar
+      - name: Upload artifact
+        uses: actions/upload-artifacts@v6
+        with:
+         name: ${{ github.event.repository.name }}-Fabric
+         path: ./Fabric/build/libs/GatheringChunks-*.jar

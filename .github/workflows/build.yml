@@ -26,9 +26,9 @@ jobs:
         uses: actions/upload-artifact@v6
         with:
          name: ${{ github.event.repository.name }}-NeoForge
-         path: ./NeoForge/build/libs/GatheringChunks-neoforge-${{MOD_VERSION}}.jar
+         path: ./NeoForge/build/libs/GatheringChunks-neoforge-${{ env.MOD_VERSION}}.jar
       - name: Upload artifact
         uses: actions/upload-artifact@v6
         with:
          name: ${{ github.event.repository.name }}-Fabric
-         path: ./Fabric/build/libs/GatheringChunks-fabric-${{MOD_VERSION}}.jar
+         path: ./Fabric/build/libs/GatheringChunks-fabric-${{ env.MOD_VERSION}}.jar

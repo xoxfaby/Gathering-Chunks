@@ -61,3 +61,6 @@ task copyToReleases(type: Copy) {
         println "Copied jars to Releases/"
     }
 }
+task printVersion(){
+    println version+"-"+minecraft_version
+}

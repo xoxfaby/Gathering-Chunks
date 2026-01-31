@@ -20,13 +20,15 @@ jobs:
           cache-read-only: false
       - name: Build with Gradle
         run: ./gradlew build
+      - name: Get Version
+        run: echo "MOD_VERSION=$(${{github.workspace}}/gradlew -q printVersion)" >> $GITHUB_ENV
       - name: Upload artifact
         uses: actions/upload-artifact@v6
         with:
          name: ${{ github.event.repository.name }}-NeoForge
-         path: ./NeoForge/build/libs/GatheringChunks-*.jar
+         path: ./NeoForge/build/libs/GatheringChunks-neoforge-{{MOD_VERSION}}.jar
       - name: Upload artifact
         uses: actions/upload-artifact@v6
         with:
          name: ${{ github.event.repository.name }}-Fabric
-         path: ./Fabric/build/libs/GatheringChunks-*.jar
+         path: ./Fabric/build/libs/GatheringChunks-fabric-{{MOD_VERSION}}.jar
